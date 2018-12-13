@@ -1,12 +1,12 @@
 var SCL = 16; // la taille d'une case
-var FRM = 7; // la durée d'un instant 
+var FRM = 7; // la durée d'un instant
 
 var gameData;//Où le fichier est chargé
 var game =[];//Où sont stockées les infos (premier traitement) du jeu
 var maps;// Où l'on met les cartes du niveau en cours
 
 var direction;//La direction dans la quelle se déplace le joueur
-	
+
 
 var win =false;// le niveau est-il gagné ?
 var loose =false;// le niveau est-il perdu
@@ -91,7 +91,7 @@ function draw() {
 	for (var i = 0; i < maps.length; i++) {
 		if(maps[i].gameOver){
 			//une seule carte ou c'est perdu et tout est perdu.
-			message = "Appuyez sur R pour recommencer";
+			message = "Press ENTER to restart.";
 			win = false;
 			loose = true;
 		} else if (!maps[i].win) {
@@ -123,14 +123,14 @@ function draw() {
 				push();
 			}
 		}
-		
+
 	}
 	pop();
 	pop();
 
 	//quand on gagne
 	if(win) {
-		message = "Appuyez sur ENTRER pour passer au niveau suivant";
+		message = "Press ENTRER for the next level";
 		if(keyCode == ENTER) {
 			//passer au niveau suivant
 			currentLevel++;
@@ -157,7 +157,7 @@ function newGame (level) {
 function keyPressed() {
 	//[W][A][S][D] ou touches fléchées pour se déplacer
 	//[R] pour Restart
-	//enfait pour se déplacer on actualise le p5.Vector direction et toutes les 10 frms on bouge les persos en fonction de la valeur actuelle. 
+	//enfait pour se déplacer on actualise le p5.Vector direction et toutes les 10 frms on bouge les persos en fonction de la valeur actuelle.
 	if(key == "W" || keyCode == UP_ARROW) {
 		// if(direction.equals(0,-1)) FRM = 2;
 		direction.set(0,-1);
@@ -172,7 +172,7 @@ function keyPressed() {
 		direction.set(0,1);
 	}
 
-	if(key == "R") newGame(currentLevel);
+	if(key == "R" || keyCode == ENTER) newGame(currentLevel);
 
 
 
