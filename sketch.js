@@ -91,7 +91,7 @@ function draw() {
 	for (var i = 0; i < maps.length; i++) {
 		if(maps[i].gameOver){
 			//une seule carte ou c'est perdu et tout est perdu.
-			message = "Press ENTER to restart.";
+			message = "You loose... (Press ENTRER).";
 			win = false;
 			loose = true;
 		} else if (!maps[i].win) {
@@ -130,12 +130,7 @@ function draw() {
 
 	//quand on gagne
 	if(win) {
-		message = "Press ENTRER for the next level";
-		if(keyCode == ENTER) {
-			//passer au niveau suivant
-			currentLevel++;
-			newGame(currentLevel);
-		}
+		message = "Bravo ! (Press ENTRER)";
 	}
 
 }
@@ -172,8 +167,12 @@ function keyPressed() {
 		direction.set(0,1);
 	}
 
-	if(key == "R" || keyCode == ENTER) newGame(currentLevel);
-
+	if(key == "R"|| keyCode == ENTER){
+		if(win){
+			currentLevel++;
+		}
+		newGame(currentLevel);
+	}
 
 
 }
